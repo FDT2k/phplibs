@@ -10,12 +10,13 @@
         }
     ],
     "require": {
-      "cbschuld/browser.php": "*"
+      "cbschuld/browser.php": "*",
+      "phpmailer/phpmailer": "~5.2"
     },
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "FDT2k\\ICE\\CORE\\": "src/"
+            "FDT2k\\Helpers\\": "src/"
         }
     }
 }
