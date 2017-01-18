@@ -12,6 +12,7 @@
     "require": {
       "cbschuld/browser.php": "*"
     },
+    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
             "FDT2k\\ICE\\CORE\\": "src/"
