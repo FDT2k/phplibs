@@ -1,8 +1,8 @@
 <?php
-namespace ICE\lib\helpers;
+namespace FDT2k\Helpers;
 
 class URI{
-		
+
 	public $username = "";
 	public $password = "";
 	public $hostname = "";
@@ -11,7 +11,7 @@ class URI{
 	public $query = array();
 	public $separator = "/";
 	public $baseurl ="";
-	
+
 	function __construct($uri=''){
 		//var_dump($uri);
 		if(empty($uri)){
@@ -26,14 +26,14 @@ class URI{
 		//var_dump($this->uri);
 		$this->parse($this->uri);
 	}
-	
+
 	public function getWebURL(){
 		return $this->protocol."://".$this->hostname;
 	}
-	
+
 	protected function parse($uri){
 		/*
-	possible outcome 
+	possible outcome
 	protocol://user:password@host:port/path1/path2?query1=query2
 	protocol://user@host:port/path1/path2
 	protocol://host:port/path1/path2
@@ -45,7 +45,7 @@ class URI{
 		preg_match_all('/(?<protocol>(?:[^:]+)s?)?:\/\/(?:(?<user>[^:\n\r]+):(?<pass>[^@\n\r]+)@)?(?<host>(?:www\.)?(?:[^:\/\n\r]+))(?::(?<port>\d+))?\/?(?<request>[^?#\n\r]+)?\??(?<query>[^#\n\r]*)?\#?(?<anchor>[^\n\r]*)?/mx', $uri, $matches);
 
 		//var_dump($matches);
-	
+
 		$this->username = $matches['user'][0];
 		$this->password = $matches['pass'][0];
 		$this->hostname = $matches['host'][0];
@@ -57,20 +57,20 @@ class URI{
 		if($this->baseurl==''){
 			$this->baseurl = '/';
 		}
-		
+
 		$this->protocol = urldecode($matches['protocol'][0]);
 		return $this;
 	}
-	
+
 	function absolutePath(){
 		return "/".implode('/',$this->path);
 	}
-	
+
 	protected function addQueryVariable($variable,$value){
 		$this->query[$variable]= $value;
 	}
-	
-	
+
+
 	function pathAsString(){
 		return implode('/',$this->path);
 	}
