@@ -1,5 +1,5 @@
 <?php
-namespace ICE\lib\helpers;
+namespace FDT2k\Helpers;
 
 class StringHelper{
 
@@ -13,7 +13,7 @@ class StringHelper{
 				case 'email':
 					$this->type = $string;
 				break;
-			}	
+			}
 		} else { // new system support
 			/*$datas = explode(':',$string);
 			if(is_array($datas)){
@@ -22,8 +22,8 @@ class StringHelper{
 					$arr[$k] = $v;
 				}
 			}*/
-			
-			//new support of quoted strings			
+
+			//new support of quoted strings
 			define('NORMAL',0);
 			define('IN_NAME',1);
 			define('IN_VALUE',2);
@@ -31,7 +31,7 @@ class StringHelper{
 			define('_START_VALUE',8);
 			$status = IN_NAME;
 			$bQuotedStringStarted= false;
-			
+
 			$arr = array();
 			for($i = 0; $i < strlen($string);$i++){
 				$c = $string[$i];
@@ -53,7 +53,7 @@ class StringHelper{
 						}/*else if($c=='"' && $bQuotedStringStarted){
 							$bQuotedStringStarted = false;
 						}*/
-						//var_dump($bQuotedStringStarted);	
+						//var_dump($bQuotedStringStarted);
 						$status = IN_VALUE;
 					break;
 					case IN_VALUE:
@@ -67,11 +67,11 @@ class StringHelper{
 						}else if($next ==''){
 							$status = _END;
 						}
-						
+
 						if(/*$c!='=' &&*/ $c!='"'){
 							$value .=$c;
 						}
-						
+
 					break;
 					case _END:
 					//var_dump($name,$value);
@@ -91,35 +91,35 @@ class StringHelper{
 						$status = IN_NAME;
 					break;
 				}
-			
+
 			}
 
 		}
 
 		return $arr;
 	}
-	
-	
+
+
 	static function noAccents($texte){
   		return str_replace( array('à','á','â','ã','ä', 'ç', 'è','é','ê','ë', 'ì','í','î','ï', 'ñ', 'ò','ó','ô','õ','ö', 'ù','ú','û','ü', 'ý','ÿ', 'À','Á','Â','Ã','Ä', 'Ç', 'È','É','Ê','Ë', 'Ì','Í','Î','Ï', 'Ñ', 'Ò','Ó','Ô','Õ','Ö', 'Ù','Ú','Û','Ü', 'Ý'), array('a','a','a','a','a', 'c', 'e','e','e','e', 'i','i','i','i', 'n', 'o','o','o','o','o', 'u','u','u','u', 'y','y', 'A','A','A','A','A', 'C', 'E','E','E','E', 'I','I','I','I', 'N', 'O','O','O','O','O', 'U','U','U','U', 'Y'), $texte);
 	}
 
-	
-	
+
+
 	static function slugify($string){
 		$regex = '/[^a-z0-9\.]/i';
 		$replace = '_';
 		$string = self::noAccents($string);
 		return preg_replace($regex,$replace,$string);
 	}
-	
+
 	static function pathExtension($string){
 	//var_dump($string);
 		return substr($string,strrpos($string,'.')+1);
 	}
-	
-	
-	
+
+
+
 	static function php2json($a) {
 	  if (is_null($a)) {
 	  	return 'null';
@@ -167,7 +167,7 @@ class StringHelper{
 	      return '{ ' . join(', ', $result) . ' }';
 	  }
 	}
-	
+
 	static function isEmpty($val) {
     $val = trim($val);
     return empty($val) && $val !== 0 && $val !=="0";
