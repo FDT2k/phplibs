@@ -1,7 +1,7 @@
 <?php
 namespace FDT2k\Helpers;
 
-class StringHelper{
+class String{
 
 	static function parseMYSQLCommentString($string){
 		if(strpos($string,':') === false){ // old system support
