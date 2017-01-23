@@ -10,8 +10,7 @@
         }
     ],
     "require": {
-      "cbschuld/browser.php": "*",
-      "phpmailer/phpmailer": "~5.2"
+      "cbschuld/browser.php": "*"
     },
     "minimum-stability": "dev",
     "autoload": {
