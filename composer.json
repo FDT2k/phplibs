@@ -2,7 +2,7 @@
     "name": "fdt2k/common-libs",
     "version":"1.0",
     "description": "Collection of libs",
-    "license": "BSD-3-Clause-Attribution",
+    "license": "MIT",
     "authors": [
         {
             "name": "Fabien Di Tore",
